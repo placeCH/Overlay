@@ -1,0 +1,21 @@
+name: Build Web Extension
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: "web-ext build"
+        id: web-ext-build
+        uses: kewisch/action-web-ext@v1
+        with:
+          cmd: build
+          source: src
+          filename: "{name}-{version}.xpi"
+          ignoreFiles: '[ "package.json","package-lock.json","yarn.lock" ]'
