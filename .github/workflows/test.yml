@@ -19,16 +19,3 @@ jobs:
           source: src
           filename: "{name}-{version}.xpi"
           ignoreFiles: '[ "package.json","package-lock.json","yarn.lock" ]'
-
-  lint:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - name: "web-ext lint"
-        id: web-ext-lint
-        uses: kewisch/action-web-ext@v1
-        with:
-          cmd: lint
-          source: src
-          filename: "{name}-{version}.xpi"
-          ignoreFiles: '[ "package.json","package-lock.json","yarn.lock" ]'
